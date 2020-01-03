@@ -1,0 +1,67 @@
+h1 {
+	
+	text-align: center;
+}
+
+body {
+   	text-align: center;
+}
+
+p.error {
+	color: red;
+}
+
+ul {
+	list-style: none;
+}
+
+ul.messages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    padding: 0 10px;
+}
+
+ul.messages li {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    background: #dcf5f2;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: left; 
+}
+
+ul.messages li#user{
+	background: #356efc;
+    border: 1px solid white;
+    color: white;
+}
+
+ul.messages li#empty{
+    height: 35px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+button#delete {
+	margin: 5px;
+}
+
+span.author {
+	font-weight: bold;
+}
+
+input#text {
+    width: 100%;
+    padding: 4px 4px;
+    box-sizing: border-box;
+    
+}
+
+div#chat {
+   margin: 0 38%;
+}

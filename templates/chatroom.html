@@ -1,0 +1,47 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='delete.js') }}"></script>
+	</head>
+
+	<body>
+		{% if g.user %}
+			<form action='/logout'>
+				<button type="submit">Logout</button>
+			</form>	
+		{% endif %}
+		{% if error %} <p class="error">{{ error }}</p> {% endif %}
+		<h2>Welcome to {{ chatroom.name }}!</h2>
+		<div id="chat">
+			<ul id="msgs" class="messages">
+			{% for message in messages %}
+				{% if message.author == g.user.username %}
+					<li id="user"><p><span class="author">{{ message.author }}: </span>{{ message.text }}
+				{% else %}
+					<li id="other"><p><span class="author">{{ message.author }}: </span>{{ message.text }}
+				{% endif %}
+			{% else %}
+				<li id="empty"><em>There is no messages currently!</em>
+			{% endfor %}
+			</ul>
+			<br>
+			<form name="form" onSubmit="return false;">
+				<input type="hidden" id="author" value="{{ g.user.username }}">
+				<input type="hidden" id="chatname" value="{{ chatroom.name }}">
+				<input type="hidden" id="chat_id" value="{{ chatroom.chatroom_id }}">
+				<input type="text" id="text">
+				<br>
+				<br>
+				<button id="btn" type="submit">Submit</button>
+			</form>
+		</div>
+		<form action='/'>
+			<br>
+			<button type="submit">Leave Room</button>
+		</form>	
+{% endblock %}
+
+
+	
+		
