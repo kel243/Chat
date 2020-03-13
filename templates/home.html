@@ -3,37 +3,37 @@
 </head>
 
 	<body>
-		{% if g.user %}
-			<form action='/logout'>
-				<button type="submit">Logout</button>
-			</form>	
-		{% endif %}
-		{% if error %} <p class="error">{{ error }}</p> {% endif %}
-		<h2>Chatrooms online:</h2>
-		{% if rooms != None %}
-			{% for room in rooms %}
-				{% if g.user.user_id == room.creator_id %}	
-					<a href="{{ url_for('chatroom', id=room.chatroom_id) }}">Enter {{ room.name }} Chatroom</a> 
-					<form action="{{ url_for('delete') }}" method="post">
-						<input type="hidden" name="id" value="{{ room.chatroom_id }}">
-						<button type="submit" id="delete">Delete {{room.name}}</button>
+		<div class="register-container">
+			<div class="form-container">	
+				{% if g.user %}
+					<form action='/logout'>
+						<button class='logout-btn' type="submit">Logout</button>
 					</form>	
-				{% else %}
-					<a href="{{ url_for('chatroom', id=room.chatroom_id) }}">Enter {{ room.name }} Chatroom</a> 
-					<br>
-					<br>
 				{% endif %}
-			{% endfor %}
-		{% else %}
-			<h3>There are no chatrooms to join currently.</h3>
-		{% endif %}
-		<h2>Create a New Room</h2>
-		<form method="post" action="">
-			<input type="hidden" name="creator_id" value="{{ g.user.user_id }}">
-			<input type="text" name="name"> 
-			<br>
-			<br>
-			<button type="submit">Create</button>
-		</form>
+				{% if error %} <p class="error">{{ error }}</p> {% endif %}
+				<h2 class='home-heading'>Chatrooms online:</h2>
+				{% if rooms != None %}
+					{% for room in rooms %}
+						{% if g.user.user_id == room.creator_id %}	
+							<a class='room-links' href="{{ url_for('chatroom', id=room.chatroom_id) }}">Enter {{ room.name }} Chatroom</a> 
+							<form action="{{ url_for('delete') }}" method="post">
+								<input type="hidden" name="id" value="{{ room.chatroom_id }}">
+								<button class='delete-btn' type="submit" id="delete">Delete {{room.name}}</button>
+							</form>	
+						{% else %}
+							<a class='room-links' href="{{ url_for('chatroom', id=room.chatroom_id) }}">Enter {{ room.name }} Chatroom</a> 
+						{% endif %}
+					{% endfor %}
+				{% else %}
+					<h3>There are no chatrooms to join currently.</h3>
+				{% endif %}
+				<h2 class='home-heading'>Create a New Room</h2>
+				<form method="post" action="">
+					<input type="hidden" name="creator_id" value="{{ g.user.user_id }}">
+					<input class='room-input' type="text" name="name"> 
+					<br>
+					<br>
+					<button class='form-btn' type="submit">Create</button>
+				</form>
 {% endblock %}
 	
