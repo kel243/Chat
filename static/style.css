@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 h1 {
   text-align: center;
 }
@@ -33,11 +39,11 @@ li {
 ul.messages li {
   width: 100%;
   display: block;
-  box-sizing: border-box;
   background: #dcf5f2;
   border: 1px solid white;
   border-radius: 10px;
   text-align: left;
+  padding: 5px;
 }
 
 ul.messages li#user {
@@ -69,12 +75,22 @@ input#text {
 .login-container,
 .register-container {
   padding-top: 5rem;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(rgb(42, 206, 198), rgb(72, 248, 239));
+}
+
+@media only screen and (max-width: 600px) {
+  .login-container,
+  .register-container {
+    padding-top: 2rem;
+  }
 }
 
 .form-container {
   background-color: white;
   padding: 2rem;
-  width: 30rem;
+  max-width: 30rem;
   margin: 0 auto;
   border-radius: 5px;
   box-shadow: 1px 1px 8px #888888;
@@ -172,7 +188,7 @@ input#text {
 
 .chat-container {
   background-color: white;
-  width: 38rem;
+  max-width: 38rem;
   margin: 0 auto;
   border-radius: 5px;
   box-shadow: 1px 1px 8px #888888;
